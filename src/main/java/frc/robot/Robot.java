@@ -168,7 +168,7 @@ DifferentialDrive drive = new DifferentialDrive(leftController, rightController)
 
    if (joy_silv.getRawButton(1)==true) {
     controlPannelMotor.set(.30);
-  }
+   }
    else if (joy_silv.getRawButton(1)==false){
    controlPannelMotor.set(0);
    }
