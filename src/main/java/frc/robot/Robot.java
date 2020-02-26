@@ -222,5 +222,5 @@ public void checkcolor (String funcolor){
  } 
 }
 
-//burgers are good
+
 }
