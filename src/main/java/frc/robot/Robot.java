@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController; 
 import edu.wpi.first.wpilibj.Joystick.ButtonType;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -55,6 +55,8 @@ private int redcount = 0;
 private int bluecount = 0;
 private int greencount = 0;
 private int yellowcount = 0;
+//Variable to store last color used in control panel stage 2 NDL
+private String LastColorString;
 
  private double forward = 0.0;
  private double turn = 0.0;
@@ -202,22 +204,27 @@ DifferentialDrive drive = new DifferentialDrive(leftController, rightController)
 
 public void checkcolor (String funcolor){
  boolean read = false;
- if (read == false){
-  if (funcolor.equals("Red")){
+ // Added in Check to LastColorString and set Last color String when it does not match so that it will only count when color changes NDL
+  if (read == false){
+  if (funcolor.equals("Red") && !funcolor.equals(LastColorString)){  
    redcount++;
    read = true;
+   LastColorString = "RED";
   }
-  else if (funcolor.equals("Blue")){
+  else if (funcolor.equals("Blue")&& !funcolor.equals(LastColorString)){
    bluecount++;
    read = true;
+   LastColorString = "Blue";
   }
-  else if (funcolor.equals("Yellow")){
+  else if (funcolor.equals("Yellow")&& !funcolor.equals(LastColorString)){
    yellowcount++;
    read = true;
+   LastColorString = "Yellow";
   }
-  else if (funcolor.equals("Green")){
+  else if (funcolor.equals("Green")&& !funcolor.equals(LastColorString)){
    greencount++;
    read = true;
+   LastColorString = "Green";
   }
  } 
 }
